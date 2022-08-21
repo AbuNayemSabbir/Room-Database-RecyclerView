@@ -17,4 +17,7 @@ public interface UserDao {
     @Query("SELECT * FROM User")
     List<User> getAllUsers();
 
+    @Query("DELETE FROM User WHERE uid=:id")
+    void deleteById(int id);
+
 }

@@ -41,6 +41,15 @@
             >
 
         </TextView>
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:id="@+id/deleteBtn"
+            android:src="@drawable/delete"
+            android:scaleType="fitXY"
+
+            ></ImageButton>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

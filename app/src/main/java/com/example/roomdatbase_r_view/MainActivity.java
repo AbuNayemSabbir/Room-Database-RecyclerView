@@ -16,7 +16,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private EditText firstName,secondName,userID;
     private Button save,fetch;
-    private TextView msgTv,data;
+    private TextView msgTv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

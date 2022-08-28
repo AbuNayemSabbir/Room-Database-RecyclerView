@@ -1,5 +1,6 @@
 package com.example.roomdatbase_r_view;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,17 +23,16 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder> {
 
 
 
-    @NonNull
-    @NotNull
+
     @Override
-    public myViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public myViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerodesign,parent,false);
 
         return new myViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull myViewHolder holder, int position) {
+    public void onBindViewHolder( myViewHolder holder, int position) {
         holder.rUserId.setText(String.valueOf(users.get(position).getUid()));
         holder.rFirstName.setText(users.get(position).getFirstName());
         holder.rLastName.setText(users.get(position).getLastName());
@@ -51,6 +51,17 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder> {
 
             }
         });
+        holder.edbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(new Intent(holder.edbtn.getContext(),updatedata.class));
+                intent.putExtra("uid",String.valueOf(users.get(position).getUid()));
+                intent.putExtra("ufname",users.get(position).getFirstName());
+                intent.putExtra("ulname",users.get(position).getLastName());
+                holder.edbtn.getContext().startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -62,16 +73,19 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.myViewHolder> {
     class myViewHolder extends RecyclerView.ViewHolder {
 
         TextView rUserId,rFirstName,rLastName;
-        ImageButton deleteBtn;
+        ImageButton deleteBtn,edbtn;
 
-        public myViewHolder(@NonNull @NotNull View itemView) {
+        public myViewHolder( View itemView) {
             super(itemView);
 
             rUserId=itemView.findViewById(R.id.rUserId);
             rFirstName=itemView.findViewById(R.id.rFirstName);
             rLastName=itemView.findViewById(R.id.rLastName);
             deleteBtn=itemView.findViewById(R.id.deleteBtn);
+            edbtn=itemView.findViewById(R.id.edbtn);
         }
     }
 
 }
+
+
